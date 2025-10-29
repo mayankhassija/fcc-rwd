@@ -1,0 +1,199 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Classic retro font - Trebuchet MS often used in early 2000s */
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  /* Retro background: gray with a subtle repeating dot pattern */
+  background: #c0c0c0 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9H8AAAANSURBVBhXY2BgYPgPAAEPAwA8vQ1DAAAAAElFTkSuQmCC') repeat;
+  color: #000;
+  line-height: 1.5;
+}
+
+#main {
+  max-width: 760px; /* Common fixed width from that era */
+  margin: 20px auto;
+  background: #e5e5e5;
+  border: 2px solid #999;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Title */
+#title {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #b00000; /* Deep red for emphasis */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+/* Image */
+#img-div {
+  text-align: center;
+  background: #000; /* Black background to make the photo pop (like a frame) */
+  padding: 10px;
+  margin: 25px 0;
+  border: 1px solid #666;
+}
+
+#image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 3px solid #fff; /* White border around the image */
+}
+
+#img-caption {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* Content */
+#tribute-info {
+  font-size: 0.95rem;
+}
+
+#tribute-info h2 {
+  font-size: 1.3rem;
+  color: #8b0000;
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+  border-bottom: 1px dashed #999; /* Dashed separator for retro feel */
+  padding-bottom: 5px;
+}
+
+ul {
+  margin: 10px 0 15px 20px;
+}
+
+ul li {
+  margin: 6px 0;
+}
+
+.albums li {
+  font-style: italic;
+  color: #444;
+}
+
+blockquote {
+  background: #f0f0f0;
+  border-left: 4px solid #b00000;
+  padding: 12px;
+  margin: 15px 0;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 8px;
+  color: #8b0000;
+  font-weight: bold;
+}
+
+/* Link */
+.learn-more {
+  text-align: center;
+  margin: 25px 0;
+  font-weight: bold;
+}
+
+#tribute-link {
+  color: #0000ff;
+  text-decoration: underline;
+}
+
+#tribute-link:hover {
+  color: #ff0000;
+}
+
+/* Newsletter Box - 2001 Style */
+.newsletter {
+  background: #d0d0d0;
+  border: 1px solid #999;
+  padding: 12px;
+  text-align: center;
+  margin: 25px 0;
+  font-size: 0.9rem;
+}
+
+.newsletter p {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.newsletter input {
+  width: 180px;
+  padding: 4px;
+  margin-right: 5px;
+  border: 1px solid #666;
+}
+
+.newsletter button {
+  padding: 4px 10px;
+  background: #ccc;
+  border: 1px solid #666;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background: #bbb;
+}
+
+/* Flags */
+.flags {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 0.8rem;
+}
+
+.flags p {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.flags img {
+  margin: 0 3px;
+  vertical-align: middle;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 30px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #main {
+    margin: 10px;
+    padding: 15px;
+  }
+  #title {
+    font-size: 2.2rem;
+  }
+  .newsletter input {
+    width: 140px;
+  }
+}
