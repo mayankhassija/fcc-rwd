@@ -1,0 +1,41 @@
+       /* Apply the Inter font family globally for a modern, clean look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light background for the whole page */
+        }
+
+        /* Custom styling for code blocks (using CSS because standard Tailwind pre/code needs specific structure) */
+        #main-doc code {
+            display: block;
+            white-space: pre-wrap;
+            word-break: break-all;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: #ffffff; /* White background for code card */
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6; /* Blue border for emphasis */
+            font-size: 0.875rem; /* text-sm */
+            overflow-x: auto;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+            font-family: monospace;
+        }
+
+        /* Mobile Layout: Navbar becomes a fixed header/menu and main content shifts down */
+        @media (max-width: 1023px) {
+            #navbar {
+                /* Override fixed positioning for mobile view */
+                position: sticky !important;
+                top: 0;
+                width: 100% !important;
+                height: auto !important;
+                max-height: 50vh; /* Prevents nav from taking up entire screen on mobile */
+                overflow-y: auto;
+                z-index: 50; /* Ensure navbar stays on top */
+            }
+
+            #main-doc {
+                margin-left: 0 !important;
+            }
+        }
