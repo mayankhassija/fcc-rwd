@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen">
+    <!-- Navigation Bar (Sidebar on Desktop, Sticky Header/Menu on Mobile) -->
+    <nav id="navbar" class="lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-64 bg-gray-50 p-6 lg:border-r border-gray-200 shadow-xl lg:shadow-md z-10">
+        <!-- Header -->
+        <header class="text-2xl font-bold text-gray-800 pb-3 mb-3 border-b border-gray-200">
+            Project Documentation
+        </header>
+
+        <!-- Navigation Links Container -->
+        <div class="space-y-2 flex flex-col">
+            <!-- Updated text and href to match headers/IDs exactly -->
+            <a href="#Section_1:_Introduction_&_Setup" class="nav-link block p-3 rounded-lg text-base font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition duration-150">
+                Section 1: Introduction & Setup
+            </a>
+            <a href="#Section_2:_Core_Concepts" class="nav-link block p-3 rounded-lg text-base font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition duration-150">
+                Section 2: Core Concepts
+            </a>
+            <a href="#Section_3:_API_Reference" class="nav-link block p-3 rounded-lg text-base font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition duration-150">
+                Section 3: API Reference
+            </a>
+            <a href="#Section_4:_Error_Handling" class="nav-link block p-3 rounded-lg text-base font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition duration-150">
+                Section 4: Error Handling
+            </a>
+            <a href="#Section_5:_Changelog" class="nav-link block p-3 rounded-lg text-base font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition duration-150">
+                Section 5: Changelog
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-doc" class="lg:ml-64 p-8 bg-white min-h-screen">
+        <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-8 border-b-2 pb-4">
+            Service X Documentation
+        </h1>
+
+        <!-- Section 1 (ID updated) -->
+        <section class="main-section mb-16 pt-4" id="Section_1:_Introduction_&_Setup">
+            <header class="text-3xl font-bold text-gray-800 mb-4">
+                Section 1: Introduction & Setup
+            </header>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                Welcome to the documentation for Service X, a new microservice designed for asynchronous data processing. This section covers the basic requirements and initial setup necessary to get the service running in your environment. We strongly recommend using Node.js version 18 or higher for full compatibility.
+            </p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                Before proceeding, ensure all dependencies are installed using your package manager. The configuration file is located at `<root>/config/service.yaml`.
+            </p>
+            <code>
+// Initialization example
+const service = new ServiceX({
+    port: 3000,
+    maxWorkers: 4,
+    cacheTimeout: 300 // seconds
+});
+
+service.start();
+            </code>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 pl-4">
+                <li>List item 1: Check environment variables.</li>
+                <li>List item 2: Verify database connection strings.</li>
+                <li>List item 3: Run the initial health check command.</li>
+            </ul>
+        </section>
+
+        <!-- Section 2 (ID updated) -->
+        <section class="main-section mb-16 pt-4" id="Section_2:_Core_Concepts">
+            <header class="text-3xl font-bold text-gray-800 mb-4">
+                Section 2: Core Concepts
+            </header>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                The core functionality revolves around two key concepts: the **Job Queue** and the **Result Cache**. Jobs are pushed into the queue and processed by worker threads, ensuring high throughput and resilience.
+            </p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                The Result Cache holds temporary outputs for 60 seconds to prevent redundant processing. Use the `cache.get()` method to check for existing results before submitting a new job.
+            </p>
+            <code>
+// Checking the cache before queueing a job
+const cacheKey = generateKey(inputData);
+const cachedResult = await cache.get(cacheKey);
+
+if (cachedResult) {
+    return cachedResult;
+}
+
+queue.addJob(inputData);
+            </code>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 pl-4">
+                <li>List item 1: Understanding worker thread lifecycle.</li>
+                <li>List item 2: Cache invalidation strategies.</li>
+                <li>List item 3: Data serialization requirements (JSON only).</li>
+            </ul>
+        </section>
+
+        <!-- Section 3 (ID updated) -->
+        <section class="main-section mb-16 pt-4" id="Section_3:_API_Reference">
+            <header class="text-3xl font-bold text-gray-800 mb-4">
+                Section 3: API Reference
+            </header>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                The public API exposes several endpoints for interacting with the service. All endpoints require an `X-Auth-Token` header for authentication.
+            </p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                The primary endpoint is `/api/v1/jobs`, which accepts a `POST` request with the job payload.
+            </p>
+            <code>
+// Example POST request body to /api/v1/jobs
+{
+    "type": "processing",
+    "data": {
+        "fileId": "a1b2c3d4e5",
+        "priority": "high"
+    }
+}
+            </code>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 pl-4">
+                <li>List item 1: POST /api/v1/jobs (Queue a new job).</li>
+                <li>List item 2: GET /api/v1/jobs/:id (Check job status).</li>
+                <li>List item 3: GET /api/v1/status (System health check).</li>
+            </ul>
+        </section>
+
+        <!-- Section 4 (ID updated) -->
+        <section class="main-section mb-16 pt-4" id="Section_4:_Error_Handling">
+            <header class="text-3xl font-bold text-gray-800 mb-4">
+                Section 4: Error Handling
+            </header>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                Errors are returned with a standard JSON structure containing a `code`, `message`, and an optional `details` array. Common error codes include `400 BAD_REQUEST` and `503 SERVICE_UNAVAILABLE`.
+            </p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                When a job fails during processing, the status will be set to `FAILED` and the worker logs will contain a full stack trace.
+            </p>
+            <code>
+// Example error response
+{
+    "error": {
+        "code": 400,
+        "message": "Invalid job payload structure.",
+        "details": ["Field 'priority' is missing."]
+    }
+}
+            </code>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 pl-4">
+                <li>List item 1: How to handle 404 responses.</li>
+                <li>List item 2: Retrying idempotent requests.</li>
+                <li>List item 3: Monitoring worker thread logs.</li>
+            </ul>
+        </section>
+
+        <!-- Section 5 (ID updated) -->
+        <section class="main-section mb-16 pt-4" id="Section_5:_Changelog">
+            <header class="text-3xl font-bold text-gray-800 mb-4">
+                Section 5: Changelog
+            </header>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                This service is continuously updated. Please check the changelog before deploying major releases to understand potential breaking changes.
+            </p>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                The latest version, v1.2.0, introduces improved queue throttling for high-volume environments.
+            </p>
+            <code>
+// Changelog entry v1.2.0
+- Feature: Added rate limiting to /api/v1/jobs.
+- Fix: Resolved memory leak in WorkerPool class.
+- Update: Node.js minimum version raised to 18.
+            </code>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 pl-4">
+                <li>List item 1: v1.1.0 - Performance optimizations.</li>
+                <li>List item 2: v1.0.0 - Initial release of Service X.</li>
+            </ul>
+        </section>
+
+        <footer class="text-center py-8 text-gray-500 border-t mt-12">
+            &copy; 2024 Service X Documentation. All rights reserved.
+        </footer>
+    </main>
+</body>
+
+</html>
